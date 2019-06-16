@@ -18,7 +18,7 @@ export default class Ranking extends React.Component{
         <h1>Ranking</h1>
         <p>カテゴリーID: {this.props.categoryID}</p>
       </div>
-    )
+    );
   }
 }
 
