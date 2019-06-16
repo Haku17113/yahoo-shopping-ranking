@@ -15,7 +15,7 @@ const getRanking = response => {
 }
 
 const initialStore = {
-  categoryID: undefined,
+  category: undefined,
   ranking: undefined,
   error: false
 };
@@ -24,7 +24,7 @@ export default (state = initialStore, action) => {
   switch(action.type){
     case 'START_REQUEST':
       return {
-        categoryID: action.payload.categoryID,
+        category: action.payload.category,
         reanking: undefined,
         error: false
       };
