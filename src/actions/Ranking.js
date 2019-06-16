@@ -1,27 +1,35 @@
 import fetchJsonp from 'fetch-jsonp';
 import qs from 'qs';
+import { replace } from 'connected-react-router';
 
 const API_URL = "https://shopping.yahooapis.jp/ShoppingWebService/V1/json/categoryRanking";
 const APP_ID = "dj00aiZpPTVtN2VYSzBVcGRRYyZzPWNvbnN1bWVyc2VjcmV0Jng9MTQ-";
 
-const startRequest = categoryID => ({
+const startRequest = category => ({
   type: 'START_REQUEST',
-  payload: {categoryID},
+  payload: { category },
 });
 
-const receiveData = (categoryID, error, response) => ({
+const receiveData = (category, error, response) => ({
   type: 'RECEIVE_DATA',
-  payload: { categoryID, error, response },
+  payload: { category, error, response },
 });
 
-const finishRequest = categoryID => ({
+const finishRequest = category => ({
   type: 'FINISH_REQUEST',
-  payload: {categoryID},
+  payload: { category },
 });
 
 export const fetchRanking = categoryID => {
-  return async dispatch => {
-    dispatch(startRequest(categoryID));
+  return async (dispatch, getState) => {
+    const categories = getState().shopping.categories;
+    const category = categories.find(category => (category.id === categoryID));
+    if(typeof category === 'undefined'){
+      dispatch(replace('/'));
+      return;
+    }
+
+    dispatch(startRequest(category));
 
     const queryString = qs.stringify({
       appid: APP_ID,
@@ -31,11 +39,11 @@ export const fetchRanking = categoryID => {
     try {
       const response = await fetchJsonp(`${API_URL}?${queryString}`);
       const data = await response.json();
-      dispatch(receiveData(categoryID, null, data));
+      dispatch(receiveData(category, null, data));
     } catch(err) {
-      dispatch(receiveData(categoryID, err));
+      dispatch(receiveData(category, err));
     }
 
-    dispatch(finishRequest(categoryID));
+    dispatch(finishRequest(category));
   }
 }
