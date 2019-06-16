@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import createBrowserHistory from 'history/createBrowserHistory';
-import './index.css';
-import App from './App';
+import App from './App.jsx';
 import createStore from './createStore';
 import * as serviceWorker from './serviceWorker';
 
