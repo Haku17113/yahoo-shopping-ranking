@@ -2,7 +2,7 @@ import fetchJsonp from 'fetch-jsonp';
 import qs from 'qs';
 
 const API_URL = "https://shopping.yahooapis.jp/ShoppingWebService/V1/json/categoryRanking";
-const API_ID = "dj00aiZpPTVtN2VYSzBVcGRRYyZzPWNvbnN1bWVyc2VjcmV0Jng9MTQ-";
+const APP_ID = "dj00aiZpPTVtN2VYSzBVcGRRYyZzPWNvbnN1bWVyc2VjcmV0Jng9MTQ-";
 
 const startRequest = categoryID => ({
   type: 'START_REQUEST',
@@ -24,7 +24,7 @@ export const fetchRanking = categoryID => {
     dispatch(startRequest(categoryID));
 
     const queryString = qs.stringify({
-      appid: API_ID,
+      appid: APP_ID,
       category_id: categoryID,
     });
 
