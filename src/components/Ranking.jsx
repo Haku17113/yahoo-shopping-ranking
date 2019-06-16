@@ -13,17 +13,39 @@ export default class Ranking extends React.Component{
   }
 
   render(){
+    const { category, ranking, error } = this.props;
     return (
       <div>
-        <h1>Ranking</h1>
-        <p>カテゴリーID: {this.props.categoryID}</p>
+        <h1>{
+          typeof category !== 'undefined'
+            ? `${category.name}のランキング`
+            : ''
+        }</h1>
+        {(() => {
+          if(error){
+            return <p>Error</p>;
+          }else if(typeof ranking === 'undefined'){
+            return <p>Now Loading...</p>;
+          }else{
+            return (
+              <ol>
+                {ranking.map(item => (
+                  <li key={`ranking-item-${item.code}`}>
+                    <img alt={item.name} src={item.imageUrl} />
+                    <a href={item.name}>{item.name}</a>
+                  </li>
+                ))}
+              </ol>
+            );
+          }
+        })()}
       </div>
     );
   }
 }
 
 Ranking.propTypes = {
-  categoryID: PropTypes.string,
+  categoryID: PropTypes.string.isRequired,
   onMount: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired
 };
