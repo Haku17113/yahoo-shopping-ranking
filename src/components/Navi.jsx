@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export default function Navi({ categories }){
   const to = category => (
-    category.id == '1'
+    category.id === '1'
       ? '/all'
       : `/category/${category.id}`
   );
