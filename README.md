@@ -1,0 +1,2 @@
+# yahoo-shopping-ranking
+React及びReduxを用いたYahoo!ショッピングのランキングを表示するアプリケーション
