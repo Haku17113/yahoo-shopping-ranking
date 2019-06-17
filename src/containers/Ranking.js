@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Ranking from '../components/Ranking';
-import * as actions from '../actions/ranking';
+import * as actions from '../actions/Ranking';
 
 const mapStateToProps = (state, ownProps) => ({
   category: state.ranking.category,
