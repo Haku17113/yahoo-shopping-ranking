@@ -7,7 +7,7 @@ const getRanking = response => {
       code: item.Code,
       name: item.Name,
       url: item.Url,
-      imageUrl: item.Image.Meium
+      imageUrl: item.Image.Medium
     });
   }
 

@@ -33,7 +33,7 @@ export const fetchRanking = categoryID => {
 
     const queryString = qs.stringify({
       appid: APP_ID,
-      category_id: categoryID,
+      category_id: category.id,
     });
 
     try {
