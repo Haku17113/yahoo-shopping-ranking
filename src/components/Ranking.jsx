@@ -32,7 +32,7 @@ export default class Ranking extends React.Component{
                 {ranking.map(item => (
                   <li key={`ranking-item-${item.code}`}>
                     <img alt={item.name} src={item.imageUrl} />
-                    <a href={item.name}>{item.name}</a>
+                    <a href={item.url}>{item.name}</a>
                   </li>
                 ))}
               </ol>
