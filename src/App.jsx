@@ -8,7 +8,7 @@ import Navi from './containers/Navi';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ width: "calc(100% - 240px)", paddingLeft: "240px" }}>
       <AppBar position="static" color="default">
         <Toolbar>
           <Typography variant="h6" color="inherit">
@@ -19,7 +19,8 @@ function App() {
 
       <Navi />
 
-      <Switch>
+      <div style={{ marginTop: "64", padding:"32" }}>
+        <Switch>
           <Route exact path="/all" component={Ranking} />
           <Route
             exact path="/category/:id"
@@ -28,6 +29,7 @@ function App() {
             }
           />
         </Switch>
+      </div>
     </div>
   );
 }
